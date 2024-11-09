@@ -4,8 +4,11 @@ A module to filter personal data fields in log messages.
 """
 
 import re
+import os
 import logging
+import mysql.connector
 from typing import List
+from mysql.connector import connection
 
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
