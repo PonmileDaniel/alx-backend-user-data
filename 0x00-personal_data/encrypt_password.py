@@ -19,5 +19,3 @@ def is_valid(hashed_password: bytes, password: str) -> bool:
     Validate if the password matches the hased
     """
     return bcrypt.checkpw(password.encode(), hased_password)
-
-
