@@ -31,3 +31,10 @@ def unauthorized() -> None:
     """Endpoint to trigger a 401 unauthorixzed
     error"""
     abort(401)
+
+
+@app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
+def forbidden() -> None:
+    """Endpoint to trigger a 403 unauthorixzed
+    error"""
+    abort(403)
