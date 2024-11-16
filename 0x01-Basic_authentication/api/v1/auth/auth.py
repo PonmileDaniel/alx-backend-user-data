@@ -15,11 +15,11 @@ class Auth:
         if not path or not excluded_paths:
             return True
 
-        if path[-1] != '/':
-            path += '/'
+        if path[-1] != "/":
+            path += "/"
 
         for excluded_path in excluded_paths:
-            if excluded_path.endswith('*'):
+            if excluded_path.endswith("*"):
                 return False
             elif path == excluded_path:
                 return False
@@ -28,12 +28,9 @@ class Auth:
     def authorization_header(self, request=None) -> str:
         """Method to get authorization header"""
         if request is None:
-            return None
-        return request.headers.get("Authorization", None)
+            return request.headers.get("Authorization", None)
+        return None
 
     def current_user(self, request=None) -> TypeVar("User"):  # type: ignore
         """Method to get current user"""
-        auth_header = self.authorization_header(request)
-        if auth_header == "Test":
-            return {"username": "test_user"}
         return None
