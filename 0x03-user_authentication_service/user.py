@@ -12,8 +12,12 @@ Base = declarative_base()
 
 
 class User(Base):
+    """
+    User class to map to the users table
+    """
     __tablename__ = "users"
-    id = Column(Integer, primary_key=True)
+
+    id = Column(Integer, primary_key=True,autoincrement=True)
     email = Column(String(250), nullable=False)
     hased_password = Column(String(250), nullable=False)
     session_id = Column(String(250), nullable=True)
