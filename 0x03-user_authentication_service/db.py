@@ -58,3 +58,15 @@ class DB:
             return find_user
         except AttributeError as e:
             raise InvalidRequestError(f"Invalid column {kwargs}") from e
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """Update the attribute of a User in the db"""
+        try:
+            user = self.find_user_by(id=user_id)
+        except NoResultFound:
+            raise ValueError(f"No use found with IDs: {user_id}")
+        for key, value in kwargs.items():
+            if not hasattr(user, key):
+                raise ValueError(f"Invalid attribute: {key}")
+            setattr(user, key, value)
+        self._session.commit()
